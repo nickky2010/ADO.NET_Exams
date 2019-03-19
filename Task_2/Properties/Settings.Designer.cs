@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ADO.NET_Exams.Properties
+namespace Task_2.Properties
 {
 
 

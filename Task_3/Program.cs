@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ADO.NET_Exams
+namespace Task_3
 {
     static class Program
     {
