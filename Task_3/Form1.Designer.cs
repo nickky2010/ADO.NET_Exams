@@ -47,7 +47,6 @@
             this.buttonAddNewDog = new System.Windows.Forms.Button();
             this.buttonChangeHeight = new System.Windows.Forms.Button();
             this.buttonShowDb = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +60,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(429, 315);
+            this.dataGridView1.Size = new System.Drawing.Size(429, 455);
             this.dataGridView1.TabIndex = 2;
             // 
             // comboBox1
@@ -250,20 +249,11 @@
             this.buttonShowDb.UseVisualStyleBackColor = true;
             this.buttonShowDb.Click += new System.EventHandler(this.buttonShowDb_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 332);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(429, 135);
-            this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 480);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.buttonShowDb);
             this.Controls.Add(this.buttonChangeHeight);
             this.Controls.Add(this.buttonAddNewDog);
@@ -313,7 +303,6 @@
         private System.Windows.Forms.Button buttonAddNewDog;
         private System.Windows.Forms.Button buttonChangeHeight;
         private System.Windows.Forms.Button buttonShowDb;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
