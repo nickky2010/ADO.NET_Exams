@@ -19,23 +19,24 @@ namespace Task_2
             connectionString = ConfigurationManager.ConnectionStrings["Dogs"].ConnectionString;            // from app.config
             connection = new SqlConnection(connectionString);
             adapter = new SqlDataAdapter("select d.Id, d.Nickname, b.Breed, d.Height from Dogs d left join Breeds b on d.BreedId=b.Id", connection);
-            buttonShowAll_Click(new object(), new EventArgs());
+            adapter.Fill(dataSet);
+            dataSet.Tables[0].PrimaryKey = new DataColumn[] { dataSet.Tables[0].Columns["Id"] };
+            dataGridView1.DataSource = dataSet.Tables[0];
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
             try
             {
-                // all very easy: adapter.DeleteCommand.ExecuteNonQuery();
-                connection.Open();
-                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter);
-                adapter.DeleteCommand = new SqlCommand("sp_deleteDog", connection);
-                adapter.DeleteCommand.CommandType = CommandType.StoredProcedure;
-                adapter.DeleteCommand.Parameters.AddWithValue("@p", int.Parse(textBox1.Text));
-                SqlParameter parameter = adapter.DeleteCommand.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
-                parameter.Direction = ParameterDirection.Output;
-                adapter.DeleteCommand.ExecuteNonQuery();
-                buttonShowAll_Click(new object(), new EventArgs());
+                DataRow row = dataSet.Tables[0].Rows.Find(Convert.ToInt32(textBox1.Text));
+                row.Delete();
+                SqlCommand delete = new SqlCommand();
+                delete.Connection = adapter.SelectCommand.Connection;
+                delete.CommandText = "delete from Dogs where Id=@id";
+                delete.Parameters.Add("@id", SqlDbType.Int);
+                delete.Parameters["@id"].SourceColumn = "Id";
+                adapter.DeleteCommand = delete;
+                adapter.Update(dataSet);
             }
             catch (Exception ex)
             {
